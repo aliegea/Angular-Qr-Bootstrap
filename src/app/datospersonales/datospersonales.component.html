@@ -1,0 +1,72 @@
+<h5 class="d-flex justify-content-center mt-4">Enter your contact Details</h5>
+
+<form class="d-flex-column justify-content-center p-2 m-4">
+  <!-- <div class="d-flex justify-content-center w-50 mx-auto">
+<input
+  class="form-control me-2"
+  [(ngModel)]="values"
+  placeholder="Your name"
+/>
+</div> -->
+
+  <label for="name" class="visually-hidden">Name</label>
+  <input
+    type="text"
+    id="inputName"
+    class="form-control justify-content-center"
+    name="nombre"
+    [(ngModel)]="data.name"
+    placeholder="Name"
+    required
+    autofocus
+  />
+  <br />
+  <label for="Surname" class="visually-hidden">Surname</label>
+  <input
+    type="text"
+    id="inputSurname"
+    class="form-control"
+    name="surname"
+    [(ngModel)]="data.surname"
+    placeholder="Surname"
+    required
+    autofocus
+  />
+  <br />
+  <label for="Email" class="visually-hidden">Email</label>
+  <input
+    type="email"
+    id="inputEmail"
+    class="form-control"
+    name="email"
+    [(ngModel)]="data.email"
+    placeholder="Email"
+    autocomplete="email"
+    required
+    autofocus
+  />
+  <br />
+  <label for="phone" class="visually-hidden">Phone Number</label>
+  <input
+    type="text"
+    id="inputPhone"
+    class="form-control"
+    name="phone"
+    [(ngModel)]="data.phone"
+    placeholder="Your phone number"
+    required
+  />
+  <br />
+  <label for="homepage" class="visually-hidden"
+    >Add your homepage(optional)</label
+  >
+  <input
+    type="url"
+    id="homepage"
+    name="homepage"
+    class="form-control"
+    name="web"
+    [(ngModel)]="data.web"
+    placeholder="Your homepage(optional)"
+  />
+</form>
