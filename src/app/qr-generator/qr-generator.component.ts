@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Meta, MetaDefinition } from "@angular/platform-browser";
-import { Datos } from "../interfaces/interfaces";tiposQR
+import { Datos } from "../interfaces/interfaces";
 @Component({
   selector: "app-qr-generator",
   templateUrl: "./qr-generator.component.html",
