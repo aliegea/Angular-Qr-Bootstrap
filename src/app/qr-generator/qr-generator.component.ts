@@ -1,51 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import { Datos } from '../interfaces/interfaces';
+import { Component, OnInit } from "@angular/core";
+import { Meta, MetaDefinition } from "@angular/platform-browser";
+import { Datos } from "../interfaces/interfaces";tiposQR
 @Component({
-  selector: 'app-qr-generator',
-  templateUrl: './qr-generator.component.html',
-  styleUrls: ['./qr-generator.component.css'],
+  selector: "app-qr-generator",
+  templateUrl: "./qr-generator.component.html",
+  styleUrls: ["./qr-generator.component.css"],
 })
 export class QrGeneratorComponent implements OnInit {
   ngOnInit() {
-    this.qrColor('foreground');
+    this.qrColor("foreground");
   }
   codes: Datos[] = [];
 
   public values: string;
-  public level: 'L' | 'M' | 'Q' | 'H';
+  public level: "L" | "M" | "Q" | "H";
   public width: number;
   public background: string;
   public foreground: string;
   public canvas: boolean;
 
   public data: Datos = {
-    name: 'Elena',
-    surname: 'Polo',
-    email: 'poloe@yahoo.com',
-    phone: '654839202',
-    web: '',
+    name: "Elena",
+    surname: "Polo",
+    email: "poloe@yahoo.com",
+    phone: "654839202",
+    web: "",
     canvas: true,
   };
   public colorPickerDirective: any = {
-    cpWidth: '230px',
-    colorPicker: '#000',
+    cpWidth: "230px",
+    colorPicker: "#000",
     cpToggle: true,
   };
   constructor() {
-    this.level = 'L';
+    this.level = "L";
     this.values = JSON.stringify(this.data);
     this.width = 250;
-    this.background = 'white';
+    this.background = "white";
     this.canvas = true;
-    this.foreground = 'foreground';
+    this.foreground = "foreground";
   }
 
-  qrLevel(val: 'L' | 'M' | 'Q' | 'H') {
+  qrLevel(val: "L" | "M" | "Q" | "H") {
     this.level = val;
   }
-  qrColor(val: 'foreground') {
-    if (val == 'foreground') {
-      this.foreground = '#000';
+  qrColor(val: "foreground") {
+    if (val == "foreground") {
+      this.foreground = "#000";
     }
   }
 
@@ -60,12 +61,12 @@ export class QrGeneratorComponent implements OnInit {
       web: cliente.web,
       canvas: cliente.canvas,
     });
-    cliente.name = '';
-    cliente.surname = '';
-    cliente.email = '';
-    cliente.phone = '';
-    cliente.web = '';
-    cliente.canvas = '';
+    cliente.name = "";
+    cliente.surname = "";
+    cliente.email = "";
+    cliente.phone = "";
+    cliente.web = "";
+    cliente.canvas = "";
     //to download last data introduced
     let i: number;
     for (i = 0; i < this.codes.length; i++) {
@@ -82,17 +83,17 @@ export class QrGeneratorComponent implements OnInit {
 
   downloadQR(fileName: string): void {
     this.qrData(this.values);
-    let canva = document.getElementsByTagName('canvas');
+    let canva = document.getElementsByTagName("canvas");
 
-    let canvaImg = 'image/png';
+    let canvaImg = "image/png";
 
     let imgURL = canva[0].toDataURL(canvaImg);
 
-    let dlLink = document.createElement('a');
+    let dlLink = document.createElement("a");
     dlLink.download = fileName;
     dlLink.href = imgURL;
     dlLink.dataset.downloadurl = [canvaImg, dlLink.download, dlLink.href].join(
-      ':'
+      ":"
     );
 
     document.body.appendChild(dlLink);
@@ -104,16 +105,16 @@ export class QrGeneratorComponent implements OnInit {
     this.width = val;
   }
 
-  qrBackground(val: 'WHITE' | 'GREY' | 'BLACK') {
+  qrBackground(val: "WHITE" | "GREY" | "BLACK") {
     switch (val) {
-      case 'WHITE':
-        this.background = '#FFFFFF';
+      case "WHITE":
+        this.background = "#FFFFFF";
         break;
-      case 'GREY':
-        this.background = '#D3D3D3';
+      case "GREY":
+        this.background = "#D3D3D3";
         break;
-      case 'BLACK':
-        this.background = '#000';
+      case "BLACK":
+        this.background = "#000";
         break;
     }
   }

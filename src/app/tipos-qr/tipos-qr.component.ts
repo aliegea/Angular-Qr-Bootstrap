@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Meta, MetaDefinition } from "@angular/platform-browser";
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.css"],
+  selector: "app-tipos-qr",
+  templateUrl: "./tipos-qr.component.html",
+  styleUrls: ["./tipos-qr.component.css"],
 })
-export class HeaderComponent implements OnInit {
+export class TiposQrComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
