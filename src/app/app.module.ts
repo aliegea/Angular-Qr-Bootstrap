@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Meta } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +33,7 @@ import { QrGeneratorComponent } from './qr-generator/qr-generator.component';
     QRCodeModule,
     ColorPickerModule,
   ],
-  providers: [],
+  providers: [Meta],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

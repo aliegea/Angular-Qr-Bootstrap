@@ -6,22 +6,27 @@ import { ContactComponent } from './contact/contact.component';
 import { QrGeneratorComponent } from './qr-generator/qr-generator.component';
 
 const routes: Routes = [
-  // {
-  //   path: 'home',
-  //   component: HomeComponent,
-  // },
-  // {
-  //   path: 'about',
-  //   component: AboutComponent,
-  // },
-  // {
-  //   path: 'qr-Generator',
-  //   component: QrGeneratorComponent,
-  // },
-  // {
-  //   path: 'contact',
-  //   component: ContactComponent,
-  // },
+  {
+    path: '',
+    component: HomeComponent,
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+
+  {
+    path: 'about',
+    component: AboutComponent,
+  },
+  {
+    path: 'qr-Generator',
+    component: QrGeneratorComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
+  },
 ];
 
 @NgModule({

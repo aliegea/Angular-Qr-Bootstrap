@@ -1,180 +1,201 @@
-<div class="container fluid qrGenerator">
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="content" id="contentData">
-        <app-datospersonales [data]="data"></app-datospersonales>
+<section>
+  <section class="breadcrumbs">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Generador QR online</h2>
+        <ol>
+          <li><a routerLink="/home">Home</a></li>
+          <li>Generador QR online</li>
+        </ol>
       </div>
-      <div class="content d-none" id="contentTexto">
-        <app-datospersonales [data]="data"></app-datospersonales>
-      </div>
-      <div class="content d-none" id="contentUrl">
-        <app-datospersonales [data]="data"></app-datospersonales>
-      </div>
-      <div class="content d-none" id="contentBC">
-        <app-datospersonales [data]="data"></app-datospersonales>
-      </div>
-
-      <br />
-      <div class="accordion m-4" id="accordionExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingOne">
-            <button
-              class="accordion-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseOne"
-              aria-expanded="true"
-              aria-controls="collapseOne"
-            >
-              Customize QR Color
-            </button>
-          </h2>
-          <div
-            id="collapseOne"
-            class="accordion-collapse collapse show justify-content-center p-4"
-            aria-labelledby="headingOne"
-            data-bs-parent="#accordionExample"
-          >
-            <div class="d-flex accordion-body justify-content-center">
-              <input
-                [(colorPicker)]="foreground"
-                [style.background]="foreground"
-                [cpDialogDisplay]="'inline'"
-                [cpWidth]="' mw-300px'"
-                [cpCancelButton]="true"
-                [cpCancelButtonClass]="'btn btn-primary btn-xs'"
-                [cpUseRootViewContainer]="true"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingTwo">
-            <button
-              class="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo"
-              aria-expanded="false"
-              aria-controls="collapseTwo"
-            >
-              Change QR Size
-            </button>
-          </h2>
-          <div
-            id="collapseTwo"
-            class="accordion-collapse collapse"
-            aria-labelledby="headingTwo"
-            data-bs-parent="#accordionExample"
-          >
-            <div class="accordion-body">
-              <div class="btn-group d-flex mx-4" role="group">
-                <button
-                  class="btn btn-outline-secondary"
-                  (click)="qrWidth(550)"
-                >
-                  550
-                </button>
-                <button
-                  class="btn btn-outline-secondary"
-                  (click)="qrWidth(450)"
-                >
-                  450
-                </button>
-                <button
-                  class="btn btn-outline-secondary"
-                  (click)="qrWidth(350)"
-                >
-                  350
-                </button>
-                <button class="btn btn-secondary" (click)="qrWidth(250)">
-                  250
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button
-              class="accordion-button collapsed"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseThree"
-              aria-expanded="false"
-              aria-controls="collapseThree"
-            >
-              Change QR Definition Level
-            </button>
-          </h2>
-          <div
-            id="collapseThree"
-            class="accordion-collapse collapse"
-            aria-labelledby="headingThree"
-            data-bs-parent="#accordionExample"
-          >
-            <div class="accordion-body">
-              <div class="btn-group d-flex mx-4 mb-3" role="group">
-                <button class="btn btn-secondary" (click)="qrLevel('L')">
-                  L
-                </button>
-                <button
-                  class="btn btn-outline-secondary"
-                  (click)="qrLevel('M')"
-                >
-                  M
-                </button>
-                <button
-                  class="btn btn-outline-secondary"
-                  (click)="qrLevel('Q')"
-                >
-                  Q
-                </button>
-                <button
-                  class="btn btn-outline-secondary"
-                  (click)="qrLevel('H')"
-                >
-                  H
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <br />
-
-      <br />
     </div>
-    <div class="d-flex col-lg-4 align-items-start justify-content-center mt-5">
-      <div class="d-flex-column justify-content-center mx-auto p-lg-4">
-        <div class="card border qrGenerator">
-          <qr-code
-            [value]="values"
-            [size]="width"
-            [level]="level"
-            [background]="background"
-            [foreground]="foreground"
-            [canvas]="true"
-            class="justify-content-center mx-auto p-5"
-          ></qr-code>
-          <div class="container fluid">
-            <div class="card-body">
-              <h5 class="card-title justify-content-center">your QR COde</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <div class="btn-group d-flex">
-                <button class="btn btn-success mx-1 p-0" (click)="qrData('')">
-                  Generate QR Code
-                </button>
-                <button
-                  class="btn btn-primary mx-1"
-                  (click)="downloadQR('yourQR')"
-                >
-                  download QR
-                </button>
+  </section>
+  <div class="container fluid qrGenerator" id="qr-Generator">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="content" id="contentData">
+          <app-datospersonales [data]="data"></app-datospersonales>
+        </div>
+        <div class="content d-none" id="contentTexto">
+          <app-datospersonales [data]="data"></app-datospersonales>
+        </div>
+        <div class="content d-none" id="contentUrl">
+          <app-datospersonales [data]="data"></app-datospersonales>
+        </div>
+        <div class="content d-none" id="contentBC">
+          <app-datospersonales [data]="data"></app-datospersonales>
+        </div>
+
+        <br />
+        <div class="accordion m-4" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Customize QR Color
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="
+                accordion-collapse
+                collapse
+                show
+                justify-content-center
+                p-4
+              "
+              aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="d-flex accordion-body justify-content-center">
+                <input
+                  [(colorPicker)]="foreground"
+                  [style.background]="foreground"
+                  [cpDialogDisplay]="'inline'"
+                  [cpWidth]="' mw-300px'"
+                  [cpCancelButton]="true"
+                  [cpCancelButtonClass]="'btn btn-primary btn-xs'"
+                  [cpUseRootViewContainer]="true"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                Change QR Size
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingTwo"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <div class="btn-group d-flex mx-4" role="group">
+                  <button
+                    class="btn btn-outline-secondary"
+                    (click)="qrWidth(550)"
+                  >
+                    550
+                  </button>
+                  <button
+                    class="btn btn-outline-secondary"
+                    (click)="qrWidth(450)"
+                  >
+                    450
+                  </button>
+                  <button
+                    class="btn btn-outline-secondary"
+                    (click)="qrWidth(350)"
+                  >
+                    350
+                  </button>
+                  <button class="btn btn-secondary" (click)="qrWidth(250)">
+                    250
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+              >
+                Change QR Definition Level
+              </button>
+            </h2>
+            <div
+              id="collapseThree"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingThree"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <div class="btn-group d-flex mx-4 mb-3" role="group">
+                  <button class="btn btn-secondary" (click)="qrLevel('L')">
+                    L
+                  </button>
+                  <button
+                    class="btn btn-outline-secondary"
+                    (click)="qrLevel('M')"
+                  >
+                    M
+                  </button>
+                  <button
+                    class="btn btn-outline-secondary"
+                    (click)="qrLevel('Q')"
+                  >
+                    Q
+                  </button>
+                  <button
+                    class="btn btn-outline-secondary"
+                    (click)="qrLevel('H')"
+                  >
+                    H
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br />
+
+        <br />
+      </div>
+      <div
+        class="d-flex col-lg-4 align-items-start justify-content-center mt-5"
+      >
+        <div class="d-flex-column justify-content-center mx-auto p-lg-4">
+          <div class="card border qrGenerator">
+            <qr-code
+              [value]="values"
+              [size]="width"
+              [level]="level"
+              [background]="background"
+              [foreground]="foreground"
+              [canvas]="true"
+              class="justify-content-center mx-auto p-5"
+            ></qr-code>
+            <div class="container fluid">
+              <div class="card-body">
+                <h5 class="card-title justify-content-center">your QR COde</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <div class="btn-group d-flex">
+                  <button class="btn btn-success mx-1 p-0" (click)="qrData('')">
+                    Generate QR Code
+                  </button>
+                  <button
+                    class="btn btn-primary mx-1"
+                    (click)="downloadQR('yourQR')"
+                  >
+                    download QR
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -182,4 +203,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>
