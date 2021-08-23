@@ -11,6 +11,7 @@ export class QrGeneratorComponent implements OnInit {
     this.qrColor("foreground");
   }
   codes: Datos[] = [];
+  clienteStr: any;
 
   public values: string;
   public level: "L" | "M" | "Q" | "H";
@@ -66,7 +67,7 @@ export class QrGeneratorComponent implements OnInit {
     cliente.email = "";
     cliente.phone = "";
     cliente.web = "";
-    cliente.canvas = "";
+    // cliente.canvas = "";
     //to download last data introduced
     let i: number;
     for (i = 0; i < this.codes.length; i++) {
@@ -77,12 +78,11 @@ export class QrGeneratorComponent implements OnInit {
         console.log(val);
       }
     }
-
+    this.downloadButton();
     console.log(this.codes);
   }
 
   downloadQR(fileName: string): void {
-    this.qrData(this.values);
     let canva = document.getElementsByTagName("canvas");
 
     let canvaImg = "image/png";
@@ -99,6 +99,7 @@ export class QrGeneratorComponent implements OnInit {
     document.body.appendChild(dlLink);
     dlLink.click();
     document.body.removeChild(dlLink);
+    this.downloadButtonOff();
   }
 
   qrWidth(val: number) {
@@ -117,5 +118,13 @@ export class QrGeneratorComponent implements OnInit {
         this.background = "#000";
         break;
     }
+  }
+  downloadButton() {
+    let btn = document.getElementById("downloadBtn") as HTMLButtonElement;
+    btn.classList.remove("d-none");
+  }
+  downloadButtonOff() {
+    let btn = document.getElementById("downloadBtn") as HTMLButtonElement;
+    btn.classList.add("d-none");
   }
 }

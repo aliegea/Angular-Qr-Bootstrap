@@ -17,13 +17,13 @@
           <app-datospersonales [data]="data"></app-datospersonales>
         </div>
         <div class="content d-none" id="contentTexto">
-          <app-datospersonales [data]="data"></app-datospersonales>
+          <!-- <app-datospersonales [data]="data"></app-datospersonales> -->
         </div>
         <div class="content d-none" id="contentUrl">
-          <app-datospersonales [data]="data"></app-datospersonales>
+          <!-- <app-datospersonales [data]="data"></app-datospersonales> -->
         </div>
         <div class="content d-none" id="contentBC">
-          <app-datospersonales [data]="data"></app-datospersonales>
+          <!-- <app-datospersonales [data]="data"></app-datospersonales> -->
         </div>
 
         <br />
@@ -190,7 +190,8 @@
                     Generate QR Code
                   </button>
                   <button
-                    class="btn btn-primary mx-1"
+                    id="downloadBtn"
+                    class="btn btn-primary mx-1 d-none"
                     (click)="downloadQR('yourQR')"
                   >
                     download QR
