@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
-// import { AboutComponent } from "./about/about.component";
+import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
 import { QrGeneratorComponent } from "./qr-generator/qr-generator.component";
 import { PreguntasFrequentesComponent } from "./preguntas-frequentes/preguntas-frequentes.component";
@@ -63,6 +63,14 @@ const routes: Routes = [
     data: {
       title: "contacto",
       description: "formulario de contacto y dirección generador QR ",
+    },
+  },
+  {
+    path: "about",
+    component: AboutComponent,
+    data: {
+      title: "testimonios",
+      description: "opiniones clientes generador QR ",
     },
   },
 ];

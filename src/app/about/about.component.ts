@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { TestimonialsService } from "../services/testimonials.service";
 
 @Component({
   selector: "app-about",
@@ -6,7 +7,15 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./about.component.css"],
 })
 export class AboutComponent implements OnInit {
-  constructor() {}
+  commentsList: any = [];
+  constructor(private TestimonialsService: TestimonialsService) {
+    console.log("componente creado");
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("componente iniciado");
+    this.TestimonialsService.getComments().subscribe(
+      (response: any) => (this.commentsList = response)
+    );
+  }
 }
