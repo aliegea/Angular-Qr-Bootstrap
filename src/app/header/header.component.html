@@ -1,27 +1,113 @@
 <!-- ======= Header ======= -->
-<header id="header" class="fixed-top header">
-  <div class="container">
-    <div class="logo float-left">
+<!-- <header id="header" class="fixed-top d-flex align-items-center">
+  <button type="button" class="mobile-nav-toggle d-lg-none">
+    <i class="bx bx-menu"></i>
+  </button>
+  <div class="container d-flex justify-content-between align-items-center">
+    <div class="logo">
       <h1 class="text-light">
         <a routerLink="home"><span>GENERADOR QR</span></a>
       </h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-    </div>
+     
 
-    <nav class="nav-menu float-right d-none d-lg-block">
+    <nav class="nav-menu float-right d-none d-lg-block" id="nabvar">
       <ul>
         <li class="active"><a routerLink="home">Home</a></li>
-        <!-- <li><a routerLink="home">Quienes somos</a></li> -->
+
         <li><a routerLink="tiposQr">Tipos de QR</a></li>
         <li><a routerLink="qr-Generator">Generador QR online</a></li>
-        <li><a routerLink="preguntas-frecuentes">Preguntas Frequentes</a></li>
+        <li>
+          <a routerLink="preguntas-frecuentes">Preguntas Frequentes</a>
+        </li>
         <li><a routerLink="contact">Contacto</a></li>
         <li><a routerLink="about">Testimonios</a></li>
       </ul>
     </nav>
+
     <!-- .nav-menu -->
-  </div>
-</header>
+<!-- </div>
+  </div> -->
+<!-- </header>  -->
+
 <!-- End Header -->
+<header id="header" class="fixed-top d-flex align-items-center">
+  <div class="">
+    <div class="logo">
+      <h1 class="text-light">
+        <a routerLink="home"><span>GENERADOR QR</span></a>
+      </h1>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom ml-auto">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item mobile">
+          <a
+            class="nav-link"
+            routerLink="home"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            >Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="tiposQr"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            >Tipos</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="qr-Generator"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            >Generador</a
+          >
+        </li>
+        <li class="nav-item mobile">
+          <a
+            class="nav-link"
+            routerLink="preguntas-frecuentes"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            >FAQ</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="about"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            >Testimonios</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="contact"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            >Contacto</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
 <router-outlet></router-outlet>
