@@ -553,7 +553,7 @@ section {
   border-color: #ff689b;
 }
 
-.services .icon-box-cyan .icon {
+.services .-cyan .icon {
   background: #e6fdfc;
 }
 
@@ -940,6 +940,9 @@ section {
   .testimonials .testimonial-item p {
     width: 80%;
   }
+}
+.tittles {
+  color: rgb(30, 67, 86);
 }
 
 /*--------------------------------------------------------------

@@ -13,17 +13,73 @@
   <div class="container fluid qrGenerator" id="qr-Generator">
     <div class="row">
       <div class="col-lg-8">
+        <div class="d-flex accordion-body justify-content-center">
+          <nav class="navbar navbar-expand-lg w-100">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav tiposQR">
+                <li class="nav-item mobile">
+                  <a
+                    class="nav-link pink"
+                    routerLink="qr-Generator"
+                    data-toggle="collapse"
+                    data-target="#navbarNav"
+                    >Datos Personales
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link cyan"
+                    routerLink="card"
+                    data-toggle="collapse"
+                    data-target="#navbarNav"
+                    >Bussiness Card</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link green"
+                    routerLink="url"
+                    data-toggle="collapse"
+                    data-target="#navbarNav"
+                    >URL</a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a
+                    class="nav-link blue"
+                    routerLink="texto"
+                    data-toggle="collapse"
+                    data-target="#navbarNav"
+                    >Texto</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
         <div class="content" id="contentData">
           <app-datospersonales [data]="data"></app-datospersonales>
         </div>
-        <div class="content d-none" id="contentTexto">
-          <!-- <app-datospersonales [data]="data"></app-datospersonales> -->
+        <div class="content" id="contentCard">
+          <app-card></app-card>
         </div>
-        <div class="content d-none" id="contentUrl">
-          <!-- <app-datospersonales [data]="data"></app-datospersonales> -->
+        <div class="content" id="contentUrl">
+          <app-url></app-url>
         </div>
-        <div class="content d-none" id="contentBC">
-          <!-- <app-datospersonales [data]="data"></app-datospersonales> -->
+        <div class="content" id="contentTexto">
+          <app-texto></app-texto>
         </div>
 
         <br />

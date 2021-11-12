@@ -2,6 +2,62 @@
   box-shadow: 0 5px 26px 0 rgba(68, 88, 144, 0.14);
   animation: fadeIn 1s ease-in-out;
 }
+.tiposQR {
+  flex: 1;
+  margin: 0;
+  justify-content: space-between;
+  border-radius: 20px;
+}
+
+.tiposQR > li {
+  background-color: #f3f8fa;
+  border-radius: 10px;
+  flex-grow: 1;
+  margin: 0 2px;
+  -webkit-box-shadow: 3px 0px 17px 3px rgba(61, 82, 92, 0.28);
+  box-shadow: 3px 0px 17px 3px rgba(61, 82, 92, 0.28);
+  text-align: center;
+  font-family: Roboto;
+  font-weight: 500;
+}
+.pink {
+  color: #ff689b;
+}
+.pink:hover {
+  background-color: #ff689b;
+
+  border-radius: 10px;
+}
+
+.cyan {
+  color: #3fcdc7;
+}
+.cyan:hover {
+  background-color: #3fcdc7;
+  border-radius: 10px;
+}
+.blue {
+  color: #2282ff;
+}
+.blue:hover {
+  background-color: #2282ff;
+  border-radius: 10px;
+}
+
+.green {
+  color: #41cf2e;
+}
+.green:hover {
+  background-color: #41cf2e;
+  border-radius: 10px;
+}
+.tiposQR > li:hover {
+  background-color: rgb(30, 67, 86);
+}
+
+.tiposQR > li > a:hover {
+  color: white;
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;

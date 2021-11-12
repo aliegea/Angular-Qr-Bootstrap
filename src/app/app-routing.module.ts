@@ -6,6 +6,10 @@ import { ContactComponent } from "./contact/contact.component";
 import { QrGeneratorComponent } from "./qr-generator/qr-generator.component";
 import { PreguntasFrequentesComponent } from "./preguntas-frequentes/preguntas-frequentes.component";
 import { TiposQrComponent } from "./tipos-qr/tipos-qr.component";
+import { DatospersonalesComponent } from "./datospersonales/datospersonales.component";
+import { UrlComponent } from "./qr-generator/url/url.component";
+import { CardComponent } from "./qr-generator/card/card.component";
+import { TextoComponent } from "./qr-generator/texto/texto.component";
 
 const routes: Routes = [
   {
@@ -71,6 +75,38 @@ const routes: Routes = [
     data: {
       title: "testimonios",
       description: "opiniones clientes generador QR ",
+    },
+  },
+  {
+    path: "datos",
+    component: DatospersonalesComponent,
+    data: {
+      title: "QR datos personles",
+      description: "generador QR para datos personales",
+    },
+  },
+  {
+    path: "card",
+    component: CardComponent,
+    data: {
+      title: "QR bussiness card",
+      description: "generador QR para bussiness card",
+    },
+  },
+  {
+    path: "url",
+    component: UrlComponent,
+    data: {
+      title: "QR url",
+      description: "generador QR para url",
+    },
+  },
+  {
+    path: "texto",
+    component: TextoComponent,
+    data: {
+      title: "QR texto",
+      description: "generador QR para textos",
     },
   },
 ];

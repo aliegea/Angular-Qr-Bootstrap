@@ -1,6 +1,8 @@
-<h5 class="d-flex justify-content-center mt-4">Enter your contact Details</h5>
+<h5 class="d-flex justify-content-center mt-4 tittles">
+  Introduce tus datos personales
+</h5>
 
-<form class="d-flex-column justify-content-center p-2 m-4">
+<form class="d-flex-column justify-content-center p-2 m-4 pink" id="imgDatos">
   <label for="name" class="visually-hidden">Name</label>
   <input
     type="text"
@@ -65,4 +67,7 @@
     [(ngModel)]="data.web"
     placeholder="Your homepage(optional)"
   />
+  <button class="btn btn-success mx-1 p-0" (click)="generateImage()">
+    Save & Preview
+  </button>
 </form>

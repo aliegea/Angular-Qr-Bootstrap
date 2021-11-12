@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Meta, MetaDefinition } from "@angular/platform-browser";
 import { Datos } from "../interfaces/interfaces";
+
 @Component({
   selector: "app-qr-generator",
   templateUrl: "./qr-generator.component.html",
@@ -21,10 +22,10 @@ export class QrGeneratorComponent implements OnInit {
   public canvas: boolean;
 
   public data: Datos = {
-    name: "Elena",
-    surname: "Polo",
-    email: "poloe@yahoo.com",
-    phone: "654839202",
+    name: "",
+    surname: "",
+    email: "",
+    phone: "",
     web: "",
     canvas: true,
   };
