@@ -29,6 +29,19 @@
   />
 
   <br />
+
+  <label for="phone" class="visually-hidden">Phone Number</label>
+  <input
+    type="text"
+    id="inputPhone"
+    class="form-control"
+    name="phone"
+    [(ngModel)]="data.phone"
+    placeholder="Your phone number"
+    required
+  />
+
+  <br />
   <label for="Email" class="visually-hidden">Email</label>
   <input
     type="email"
@@ -40,18 +53,6 @@
     autocomplete="email"
     required
     autofocus
-  />
-
-  <br />
-  <label for="phone" class="visually-hidden">Phone Number</label>
-  <input
-    type="text"
-    id="inputPhone"
-    class="form-control"
-    name="phone"
-    [(ngModel)]="data.phone"
-    placeholder="Your phone number"
-    required
   />
 
   <br />
@@ -67,7 +68,4 @@
     [(ngModel)]="data.web"
     placeholder="Your homepage(optional)"
   />
-  <button class="btn btn-success mx-1 p-0" (click)="generateImage()">
-    Save & Preview
-  </button>
 </form>

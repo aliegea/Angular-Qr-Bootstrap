@@ -72,7 +72,8 @@
         <div class="content" id="contentData">
           <app-datospersonales [data]="data"></app-datospersonales>
         </div>
-        <div class="content" id="contentCard">
+
+        <!-- <div class="content" id="contentCard">
           <app-card></app-card>
         </div>
         <div class="content" id="contentUrl">
@@ -80,8 +81,8 @@
         </div>
         <div class="content" id="contentTexto">
           <app-texto></app-texto>
-        </div>
-
+        </div> -->
+        <button class="btn btn-secondary" (click)="newQr()">Borrar</button>
         <br />
         <div class="accordion m-4" id="accordionExample">
           <div class="accordion-item">
@@ -236,10 +237,21 @@
             ></qr-code>
             <div class="container fluid">
               <div class="card-body">
-                <h5 class="card-title justify-content-center">your QR COde</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                <h5 class="card-title justify-content-center m-2">
+                  Contenido de tu QR
+                </h5>
+                <p class="card-text data">
+                  {{ data.name + "" }}
+                  {{ data.surname }}
+
+                  <br />
+                  {{ data.phone }}
+
+                  <br />
+                  {{ data.email }}
+                  <br />
+
+                  {{ data.web }}
                 </p>
                 <div class="btn-group d-flex">
                   <button class="btn btn-success mx-1 p-0" (click)="qrData('')">

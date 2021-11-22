@@ -20,6 +20,7 @@ export class QrGeneratorComponent implements OnInit {
   public background: string;
   public foreground: string;
   public canvas: boolean;
+  public result: string = "";
 
   public data: Datos = {
     name: "",
@@ -36,7 +37,7 @@ export class QrGeneratorComponent implements OnInit {
   };
   constructor() {
     this.level = "L";
-    this.values = JSON.stringify(this.data);
+    this.values = this.result;
     this.width = 250;
     this.background = "white";
     this.canvas = true;
@@ -54,7 +55,21 @@ export class QrGeneratorComponent implements OnInit {
 
   qrData(val: string) {
     let cliente = this.data;
-    let clienteStr = JSON.stringify(this.data);
+    this.clienteStr =
+      "MECARD:N:" +
+      this.data.surname +
+      "," +
+      this.data.name +
+      ";TEL:" +
+      this.data.phone +
+      ";" +
+      "EMAIL:" +
+      this.data.email +
+      ";" +
+      "URL:" +
+      this.data.web +
+      ";;";
+    val = this.result;
     this.codes.push({
       name: cliente.name,
       surname: cliente.surname,
@@ -63,26 +78,29 @@ export class QrGeneratorComponent implements OnInit {
       web: cliente.web,
       canvas: cliente.canvas,
     });
-    cliente.name = "";
-    cliente.surname = "";
-    cliente.email = "";
-    cliente.phone = "";
-    cliente.web = "";
+
     // cliente.canvas = "";
     //to download last data introduced
-    let i: number;
-    for (i = 0; i < this.codes.length; i++) {
-      if (i == this.codes.length - 1) {
-        clienteStr = JSON.stringify(this.codes[i]);
-        this.values = clienteStr;
-        val = clienteStr;
-        console.log(val);
-      }
-    }
+    // let i: number;
+    // for (i = 0; i < this.codes.length; i++) {
+    //   if (i == this.codes.length - 1) {
+    //     clienteStr = JSON.stringify(this.codes[i]);
+    this.values = this.clienteStr;
+    val = this.clienteStr;
+    console.log(val);
+    // }
+    // }
     this.downloadButton();
+    console.log(val);
     console.log(this.codes);
   }
-
+  newQr() {
+    this.data.name = "";
+    this.data.surname = "";
+    this.data.email = "";
+    this.data.phone = "";
+    this.data.web = "";
+  }
   downloadQR(fileName: string): void {
     let canva = document.getElementsByTagName("canvas");
 
