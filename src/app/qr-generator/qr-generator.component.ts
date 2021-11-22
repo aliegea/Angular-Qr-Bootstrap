@@ -10,6 +10,7 @@ import { Datos } from "../interfaces/interfaces";
 export class QrGeneratorComponent implements OnInit {
   ngOnInit() {
     this.qrColor("foreground");
+    this.qrBackground("#ffffff");
   }
   codes: Datos[] = [];
   clienteStr: any;
@@ -21,6 +22,7 @@ export class QrGeneratorComponent implements OnInit {
   public foreground: string;
   public canvas: boolean;
   public result: string = "";
+  public newItem: string = ";";
 
   public data: Datos = {
     name: "",
@@ -32,9 +34,10 @@ export class QrGeneratorComponent implements OnInit {
   };
   public colorPickerDirective: any = {
     cpWidth: "230px",
-    colorPicker: "#000",
+    colorPicker: "#fff",
     cpToggle: true,
   };
+
   constructor() {
     this.level = "L";
     this.values = this.result;
@@ -42,6 +45,9 @@ export class QrGeneratorComponent implements OnInit {
     this.background = "white";
     this.canvas = true;
     this.foreground = "foreground";
+  }
+  addUrl(newItem: string) {
+    this.newItem = newItem;
   }
 
   qrLevel(val: "L" | "M" | "Q" | "H") {
@@ -54,42 +60,40 @@ export class QrGeneratorComponent implements OnInit {
   }
 
   qrData(val: string) {
-    let cliente = this.data;
-    this.clienteStr =
-      "MECARD:N:" +
-      this.data.surname +
-      "," +
-      this.data.name +
-      ";TEL:" +
-      this.data.phone +
-      ";" +
-      "EMAIL:" +
-      this.data.email +
-      ";" +
-      "URL:" +
-      this.data.web +
-      ";;";
-    val = this.result;
-    this.codes.push({
-      name: cliente.name,
-      surname: cliente.surname,
-      email: cliente.email,
-      phone: cliente.phone,
-      web: cliente.web,
-      canvas: cliente.canvas,
-    });
+    if (this.newItem !== "") {
+      this.values = this.newItem;
+      val = this.newItem;
+      console.log(val);
+    } else {
+      let cliente = this.data;
+      this.clienteStr =
+        "MECARD:N:" +
+        this.data.surname +
+        "," +
+        this.data.name +
+        ";TEL:" +
+        this.data.phone +
+        ";" +
+        "EMAIL:" +
+        this.data.email +
+        ";" +
+        "URL:" +
+        this.data.web +
+        ";;";
+      val = this.result;
+      this.codes.push({
+        name: cliente.name,
+        surname: cliente.surname,
+        email: cliente.email,
+        phone: cliente.phone,
+        web: cliente.web,
+        canvas: cliente.canvas,
+      });
 
-    // cliente.canvas = "";
-    //to download last data introduced
-    // let i: number;
-    // for (i = 0; i < this.codes.length; i++) {
-    //   if (i == this.codes.length - 1) {
-    //     clienteStr = JSON.stringify(this.codes[i]);
-    this.values = this.clienteStr;
-    val = this.clienteStr;
-    console.log(val);
-    // }
-    // }
+      this.values = this.clienteStr;
+      val = this.clienteStr;
+      console.log(val);
+    }
     this.downloadButton();
     console.log(val);
     console.log(this.codes);
@@ -125,18 +129,8 @@ export class QrGeneratorComponent implements OnInit {
     this.width = val;
   }
 
-  qrBackground(val: "WHITE" | "GREY" | "BLACK") {
-    switch (val) {
-      case "WHITE":
-        this.background = "#FFFFFF";
-        break;
-      case "GREY":
-        this.background = "#D3D3D3";
-        break;
-      case "BLACK":
-        this.background = "#000";
-        break;
-    }
+  qrBackground(val: string) {
+    this.background = val;
   }
   downloadButton() {
     let btn = document.getElementById("downloadBtn") as HTMLButtonElement;

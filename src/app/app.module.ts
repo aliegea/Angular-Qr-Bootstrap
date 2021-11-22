@@ -17,9 +17,9 @@ import { TiposQrComponent } from "./tipos-qr/tipos-qr.component";
 import { PreguntasFrequentesComponent } from "./preguntas-frequentes/preguntas-frequentes.component";
 import { AboutComponent } from "./about/about.component";
 import { UrlComponent } from "./qr-generator/url/url.component";
-import { DatosComponent } from './qr-generator/datos/datos.component';
-import { TextoComponent } from './qr-generator/texto/texto.component';
-import { CardComponent } from './qr-generator/card/card.component';
+import { DatosComponent } from "./qr-generator/datos/datos.component";
+import { TextoComponent } from "./qr-generator/texto/texto.component";
+import { CardComponent } from "./qr-generator/card/card.component";
 
 @NgModule({
   declarations: [

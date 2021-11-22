@@ -1,1 +1,24 @@
-<p>url works!</p>
+<h5 class="d-flex justify-content-center mt-4 tittles">Introduce una URL</h5>
+
+<form class="d-flex-column justify-content-center p-2 m-4 cyan" id="imgDatos">
+  <label for="url" class="visually-hidden">Url</label>
+
+  <input
+    type="url"
+    name="url"
+    id="url"
+    placeholder="https://example.com"
+    pattern="https://.*"
+    size="30"
+    class="form-control justify-content-center mb-2"
+    #newUrl
+    required
+  />
+  <div class="row">
+    <div class="col text-center">
+      <button (click)="addNewUrl(newUrl.value)" class="btn btn-info">
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>

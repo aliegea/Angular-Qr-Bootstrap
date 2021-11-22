@@ -37,15 +37,7 @@
                     >Datos Personales
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link cyan"
-                    routerLink="card"
-                    data-toggle="collapse"
-                    data-target="#navbarNav"
-                    >Bussiness Card</a
-                  >
-                </li>
+
                 <li class="nav-item">
                   <a
                     class="nav-link green"
@@ -53,16 +45,6 @@
                     data-toggle="collapse"
                     data-target="#navbarNav"
                     >URL</a
-                  >
-                </li>
-
-                <li class="nav-item">
-                  <a
-                    class="nav-link blue"
-                    routerLink="texto"
-                    data-toggle="collapse"
-                    data-target="#navbarNav"
-                    >Texto</a
                   >
                 </li>
               </ul>
@@ -73,16 +55,10 @@
           <app-datospersonales [data]="data"></app-datospersonales>
         </div>
 
-        <!-- <div class="content" id="contentCard">
-          <app-card></app-card>
-        </div>
         <div class="content" id="contentUrl">
-          <app-url></app-url>
+          <app-url (newUrlEvent)="addUrl($event)"></app-url>
         </div>
-        <div class="content" id="contentTexto">
-          <app-texto></app-texto>
-        </div> -->
-        <button class="btn btn-secondary" (click)="newQr()">Borrar</button>
+
         <br />
         <div class="accordion m-4" id="accordionExample">
           <div class="accordion-item">
@@ -95,7 +71,37 @@
                 aria-expanded="true"
                 aria-controls="collapseOne"
               >
-                Customize QR Color
+                Cambia el color de tu código QR
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="
+                accordion-collapse
+                collapse
+                show
+                justify-content-center
+                p-4
+              "
+              aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="d-flex accordion-body justify-content-center">
+                <input type="color" [(ngModel)]="foreground" class="color" />
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Personaliza el color de fondo
               </button>
             </h2>
             <div
@@ -112,13 +118,10 @@
             >
               <div class="d-flex accordion-body justify-content-center">
                 <input
-                  [(colorPicker)]="foreground"
-                  [style.background]="foreground"
-                  [cpDialogDisplay]="'inline'"
-                  [cpWidth]="' mw-300px'"
-                  [cpCancelButton]="true"
-                  [cpCancelButtonClass]="'btn btn-primary btn-xs'"
-                  [cpUseRootViewContainer]="true"
+                  type="color"
+                  [(ngModel)]="background"
+                  class="color"
+                  value="#ffffff"
                 />
               </div>
             </div>
@@ -133,7 +136,7 @@
                 aria-expanded="false"
                 aria-controls="collapseTwo"
               >
-                Change QR Size
+                Personaliza el tamaño de tu QR
               </button>
             </h2>
             <div
@@ -142,29 +145,18 @@
               aria-labelledby="headingTwo"
               data-bs-parent="#accordionExample"
             >
-              <div class="accordion-body">
-                <div class="btn-group d-flex mx-4" role="group">
-                  <button
-                    class="btn btn-outline-secondary"
-                    (click)="qrWidth(550)"
-                  >
-                    550
-                  </button>
-                  <button
-                    class="btn btn-outline-secondary"
-                    (click)="qrWidth(450)"
-                  >
-                    450
-                  </button>
-                  <button
-                    class="btn btn-outline-secondary"
-                    (click)="qrWidth(350)"
-                  >
-                    350
-                  </button>
-                  <button class="btn btn-secondary" (click)="qrWidth(250)">
-                    250
-                  </button>
+              <div class="d-flex accordion-body justify-content-center">
+                <div class="accordion-body">
+                  <input
+                    class="size"
+                    id="size"
+                    type="range"
+                    value="400"
+                    min="100"
+                    max="800"
+                    step="50"
+                    [(ngModel)]="width"
+                  />
                 </div>
               </div>
             </div>
@@ -179,7 +171,7 @@
                 aria-expanded="false"
                 aria-controls="collapseThree"
               >
-                Change QR Definition Level
+                Nivel de Definición
               </button>
             </h2>
             <div
@@ -190,7 +182,10 @@
             >
               <div class="accordion-body">
                 <div class="btn-group d-flex mx-4 mb-3" role="group">
-                  <button class="btn btn-secondary" (click)="qrLevel('L')">
+                  <button
+                    class="btn btn-outline-secondary"
+                    (click)="qrLevel('L')"
+                  >
                     L
                   </button>
                   <button
@@ -249,20 +244,25 @@
 
                   <br />
                   {{ data.email }}
-                  <br />
 
                   {{ data.web }}
+                  <br />
+                  {{ newItem }}
                 </p>
+
                 <div class="btn-group d-flex">
-                  <button class="btn btn-success mx-1 p-0" (click)="qrData('')">
-                    Generate QR Code
-                  </button>
+                  <div class="col text-center">
+                    <button class="btn btn-success" (click)="qrData('')">
+                      Generar QR
+                    </button>
+                  </div>
+
                   <button
                     id="downloadBtn"
                     class="btn btn-primary mx-1 d-none"
                     (click)="downloadQR('yourQR')"
                   >
-                    download QR
+                    Descargar QR
                   </button>
                 </div>
               </div>

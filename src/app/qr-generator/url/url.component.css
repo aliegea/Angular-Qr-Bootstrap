@@ -1,0 +1,5 @@
+.cyan {
+  -webkit-box-shadow: 3px 0px 17px 3px rgba(63, 205, 199, 0.48);
+  box-shadow: 3px 0px 17px 3px rgba(63, 205, 199, 0.48);
+  border-radius: 10px;
+}
