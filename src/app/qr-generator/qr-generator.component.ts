@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Meta, MetaDefinition } from "@angular/platform-browser";
 import { Datos } from "../interfaces/interfaces";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-qr-generator",
@@ -8,6 +9,10 @@ import { Datos } from "../interfaces/interfaces";
   styleUrls: ["./qr-generator.component.css"],
 })
 export class QrGeneratorComponent implements OnInit {
+  isUrl: boolean = false;
+  isData: boolean = true;
+  isTexto: boolean = false;
+  public newItem: string = "";
   ngOnInit() {
     this.qrColor("foreground");
     this.qrBackground("#ffffff");
@@ -22,9 +27,10 @@ export class QrGeneratorComponent implements OnInit {
   public foreground: string;
   public canvas: boolean;
   public result: string = "";
-  public newItem: string = ";";
 
   public data: Datos = {
+    company: "",
+    position: "",
     name: "",
     surname: "",
     email: "",
@@ -38,7 +44,7 @@ export class QrGeneratorComponent implements OnInit {
     cpToggle: true,
   };
 
-  constructor() {
+  constructor(private route: Router) {
     this.level = "L";
     this.values = this.result;
     this.width = 250;
@@ -46,8 +52,9 @@ export class QrGeneratorComponent implements OnInit {
     this.canvas = true;
     this.foreground = "foreground";
   }
-  addUrl(newItem: string) {
-    this.newItem = newItem;
+
+  addData(newData: any) {
+    console.log(newData);
   }
 
   qrLevel(val: "L" | "M" | "Q" | "H") {
@@ -60,10 +67,11 @@ export class QrGeneratorComponent implements OnInit {
   }
 
   qrData(val: string) {
-    if (this.newItem !== "") {
+    if (this.isUrl) {
       this.values = this.newItem;
       val = this.newItem;
       console.log(val);
+      this.downloadButton();
     } else {
       let cliente = this.data;
       this.clienteStr =
@@ -71,6 +79,12 @@ export class QrGeneratorComponent implements OnInit {
         this.data.surname +
         "," +
         this.data.name +
+        ";" +
+        "NOTE:" +
+        this.data.company +
+        "-" +
+        this.data.position +
+        ";" +
         ";TEL:" +
         this.data.phone +
         ";" +
@@ -93,10 +107,11 @@ export class QrGeneratorComponent implements OnInit {
       this.values = this.clienteStr;
       val = this.clienteStr;
       console.log(val);
+
+      this.downloadButton();
+      console.log(val);
+      console.log(this.codes);
     }
-    this.downloadButton();
-    console.log(val);
-    console.log(this.codes);
   }
   newQr() {
     this.data.name = "";
@@ -139,5 +154,20 @@ export class QrGeneratorComponent implements OnInit {
   downloadButtonOff() {
     let btn = document.getElementById("downloadBtn") as HTMLButtonElement;
     btn.classList.add("d-none");
+  }
+  handleIsUrl() {
+    this.isData = false;
+
+    this.isUrl = true;
+    console.log("Url is" + this.isUrl);
+  }
+  handleIsData() {
+    this.isUrl = false;
+    this.isData = true;
+    console.log("data is " + this.isData);
+  }
+  addUrl(newItem: string): string {
+    this.newItem = newItem;
+    return newItem;
   }
 }

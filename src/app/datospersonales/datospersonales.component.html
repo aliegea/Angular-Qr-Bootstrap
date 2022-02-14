@@ -3,6 +3,30 @@
 </h5>
 
 <form class="d-flex-column justify-content-center p-2 m-4 pink" id="imgDatos">
+  <label for="company" class="visually-hidden">Company</label>
+  <input
+    type="text"
+    id="inputCompany"
+    class="form-control justify-content-center"
+    name="company"
+    [(ngModel)]="data.company"
+    placeholder="Empresa (opcional)"
+    autofocus
+  />
+
+  <br />
+  <label for="position" class="visually-hidden">Position</label>
+  <input
+    type="text"
+    id="inputPosition"
+    class="form-control justify-content-center"
+    name="position"
+    [(ngModel)]="data.position"
+    placeholder="Cargo (opcional)"
+    autofocus
+  />
+
+  <br />
   <label for="name" class="visually-hidden">Name</label>
   <input
     type="text"
@@ -10,7 +34,7 @@
     class="form-control justify-content-center"
     name="nombre"
     [(ngModel)]="data.name"
-    placeholder="Name"
+    placeholder="Nombre"
     required
     autofocus
   />
@@ -23,7 +47,7 @@
     class="form-control"
     name="surname"
     [(ngModel)]="data.surname"
-    placeholder="Surname"
+    placeholder="Apellido"
     required
     autofocus
   />
@@ -37,7 +61,7 @@
     class="form-control"
     name="phone"
     [(ngModel)]="data.phone"
-    placeholder="Your phone number"
+    placeholder="Teléfono"
     required
   />
 
