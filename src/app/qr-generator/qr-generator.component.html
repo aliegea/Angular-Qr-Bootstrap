@@ -1,257 +1,244 @@
-<section>
-  <section class="breadcrumbs mt-3">
-    <div class="d-flex justify-content-between align-items-center px-5">
-      <h2>Generador QR online</h2>
-      <ol>
-        <li><a routerLink="/home">Home</a></li>
-        <li>Generador QR online</li>
-      </ol>
-    </div>
-  </section>
-  <div class="qrGenerator p-4" id="qr-Generator">
-    <div class="row">
-      <div class="col-lg-6 px-4">
-        <div class="d-flex accordion-body justify-content-center">
-          <nav class="navbar navbar-expand-lg w-100">
+<div class="qrGenerator p-4" id="qr-Generator">
+  <div class="row">
+    <div class="col-lg-6 px-4">
+      <div class="d-flex accordion-body justify-content-center">
+        <nav class="navbar navbar-expand-lg w-100">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav tiposQR">
+              <li class="nav-item mobile">
+                <a
+                  class="nav-link pink"
+                  (click)="handleIsData()"
+                  data-toggle="collapse"
+                  data-target="#navbarNav"
+                  >Datos Personales
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link green"
+                  (click)="handleIsUrl()"
+                  data-toggle="collapse"
+                  data-target="#navbarNav"
+                  >URL</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <ng-container *ngIf="isData; else Url" class="content">
+        <app-datospersonales [data]="data"></app-datospersonales>
+      </ng-container>
+
+      <ng-template #Url>
+        <app-url (newUrlEvent)="addUrl($event)"></app-url>
+      </ng-template>
+      <br />
+      <div class="accordion m-4 px-2" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
             <button
-              class="navbar-toggler"
+              class="accordion-button"
               type="button"
-              data-toggle="collapse"
-              data-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
             >
-              <span class="navbar-toggler-icon"></span>
+              Cambia el color de tu código QR
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav tiposQR">
-                <li class="nav-item mobile">
-                  <a
-                    class="nav-link pink"
-                    (click)="handleIsData()"
-                    data-toggle="collapse"
-                    data-target="#navbarNav"
-                    >Datos Personales
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a
-                    class="nav-link green"
-                    (click)="handleIsUrl()"
-                    data-toggle="collapse"
-                    data-target="#navbarNav"
-                    >URL</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-        <ng-container *ngIf="isData; else Url" class="content">
-          <app-datospersonales [data]="data"></app-datospersonales>
-        </ng-container>
-
-        <ng-template #Url>
-          <app-url (newUrlEvent)="addUrl($event)"></app-url>
-        </ng-template>
-        <br />
-        <div class="accordion m-4 px-2" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseOne"
-                aria-expanded="true"
-                aria-controls="collapseOne"
-              >
-                Cambia el color de tu código QR
-              </button>
-            </h2>
-            <div
-              id="collapseOne"
-              class="accordion-collapse collapse show justify-content-center p-4"
-              aria-labelledby="headingOne"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="d-flex accordion-body justify-content-center">
-                <input type="color" [(ngModel)]="foreground" class="color" />
-              </div>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show justify-content-center p-4"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="d-flex accordion-body justify-content-center">
+              <input type="color" [(ngModel)]="foreground" class="color" />
             </div>
           </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseOne"
-                aria-expanded="true"
-                aria-controls="collapseOne"
-              >
-                Personaliza el color de fondo
-              </button>
-            </h2>
-            <div
-              id="collapseOne"
-              class="accordion-collapse collapse show justify-content-center p-4"
-              aria-labelledby="headingOne"
-              data-bs-parent="#accordionExample"
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
             >
-              <div class="d-flex accordion-body justify-content-center">
+              Personaliza el color de fondo
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show justify-content-center p-4"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="d-flex accordion-body justify-content-center">
+              <input
+                type="color"
+                [(ngModel)]="background"
+                class="color"
+                value="#ffffff"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              Personaliza el tamaño de tu QR
+            </button>
+          </h2>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="d-flex accordion-body justify-content-center">
+              <div class="accordion-body">
                 <input
-                  type="color"
-                  [(ngModel)]="background"
-                  class="color"
-                  value="#ffffff"
+                  class="size"
+                  id="size"
+                  type="range"
+                  value="400"
+                  min="100"
+                  max="800"
+                  step="50"
+                  [(ngModel)]="width"
                 />
               </div>
             </div>
           </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo"
-                aria-expanded="false"
-                aria-controls="collapseTwo"
-              >
-                Personaliza el tamaño de tu QR
-              </button>
-            </h2>
-            <div
-              id="collapseTwo"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingTwo"
-              data-bs-parent="#accordionExample"
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
             >
-              <div class="d-flex accordion-body justify-content-center">
-                <div class="accordion-body">
-                  <input
-                    class="size"
-                    id="size"
-                    type="range"
-                    value="400"
-                    min="100"
-                    max="800"
-                    step="50"
-                    [(ngModel)]="width"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseThree"
-                aria-expanded="false"
-                aria-controls="collapseThree"
-              >
-                Nivel de Definición
-              </button>
-            </h2>
-            <div
-              id="collapseThree"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingThree"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body">
-                <div class="btn-group d-flex mx-4 mb-3" role="group">
-                  <button
-                    class="btn btn-outline-secondary"
-                    (click)="qrLevel('L')"
-                  >
-                    L
-                  </button>
-                  <button
-                    class="btn btn-outline-secondary"
-                    (click)="qrLevel('M')"
-                  >
-                    M
-                  </button>
-                  <button
-                    class="btn btn-outline-secondary"
-                    (click)="qrLevel('Q')"
-                  >
-                    Q
-                  </button>
-                  <button
-                    class="btn btn-outline-secondary"
-                    (click)="qrLevel('H')"
-                  >
-                    H
-                  </button>
-                </div>
+              Nivel de Definición
+            </button>
+          </h2>
+          <div
+            id="collapseThree"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <div class="btn-group d-flex mx-4 mb-3" role="group">
+                <button
+                  class="btn btn-outline-secondary"
+                  (click)="qrLevel('L')"
+                >
+                  L
+                </button>
+                <button
+                  class="btn btn-outline-secondary"
+                  (click)="qrLevel('M')"
+                >
+                  M
+                </button>
+                <button
+                  class="btn btn-outline-secondary"
+                  (click)="qrLevel('Q')"
+                >
+                  Q
+                </button>
+                <button
+                  class="btn btn-outline-secondary"
+                  (click)="qrLevel('H')"
+                >
+                  H
+                </button>
               </div>
             </div>
           </div>
         </div>
-
-        <br />
-
-        <br />
       </div>
-      <div
-        class="d-flex col-lg-6 align-items-start justify-content-center mt-5"
-      >
-        <div class="d-flex-column justify-content-center mx-auto p-lg-6">
-          <div class="card border qrGenerator">
-            <qr-code
-              [value]="values"
-              [size]="width"
-              [level]="level"
-              [background]="background"
-              [foreground]="foreground"
-              [canvas]="true"
-              class="justify-content-center mx-auto p-5"
-            ></qr-code>
-            <div class="container fluid">
-              <div class="card-body">
-                <h5 class="card-title justify-content-center m-2">
-                  Contenido de tu QR
-                </h5>
-                <p class="card-text data">
-                  {{ data.name + "" }}
-                  {{ data.surname }}
-                  <br />
-                  {{ data.company }}
-                  <br />
-                  {{ data.position }}
 
-                  <br />
-                  {{ data.phone }}
+      <br />
 
-                  <br />
-                  {{ data.email }}
+      <br />
+    </div>
+    <div class="d-flex col-lg-6 align-items-start justify-content-center mt-5">
+      <div class="d-flex-column justify-content-center mx-auto p-lg-6">
+        <div class="card border qrGenerator">
+          <qr-code
+            [value]="values"
+            [size]="width"
+            [level]="level"
+            [background]="background"
+            [foreground]="foreground"
+            [canvas]="true"
+            class="justify-content-center mx-auto p-5"
+          ></qr-code>
+          <div class="container fluid">
+            <div class="card-body">
+              <h5 class="card-title justify-content-center m-2">
+                Contenido de tu QR
+              </h5>
+              <p class="card-text data">
+                {{ data.name + "" }}
+                {{ data.surname }}
+                <br />
+                {{ data.company }}
+                <br />
+                {{ data.position }}
 
-                  {{ data.web }}
-                </p>
+                <br />
+                {{ data.phone }}
 
-                <div class="btn-group d-flex">
-                  <div class="col text-center">
-                    <button class="btn btn-success" (click)="qrData('')">
-                      Generar QR
-                    </button>
-                  </div>
+                <br />
+                {{ data.email }}
 
-                  <button
-                    id="downloadBtn"
-                    class="btn btn-primary mx-1 d-none"
-                    (click)="downloadQR('yourQR')"
-                  >
-                    Descargar QR
+                {{ data.web }}
+              </p>
+
+              <div class="btn-group d-flex">
+                <div class="col text-center">
+                  <button class="btn generatebtn" (click)="qrData('')">
+                    Generar QR
                   </button>
                 </div>
+
+                <button
+                  id="downloadBtn"
+                  class="btn btn-primary mx-1 d-none"
+                  (click)="downloadQR('yourQR')"
+                >
+                  Descargar QR
+                </button>
               </div>
             </div>
           </div>
@@ -259,4 +246,4 @@
       </div>
     </div>
   </div>
-</section>
+</div>

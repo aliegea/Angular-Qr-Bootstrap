@@ -1,0 +1,33 @@
+footer {
+  color: white;
+  padding: 5px;
+  min-width: 100%;
+  text-align: center;
+  background-color: #1ba098;
+  font-size: 1.3rem;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.avatar {
+  justify-content: left;
+
+  padding-left: 20px;
+}
+.avatar img {
+  border-radius: 50%;
+  max-width: 40px;
+  min-width: 40px;
+  max-height: 40px;
+  min-height: 40px;
+  border: 6px solid #1ba098;
+  background-color: white;
+}
+.img {
+  display: flex;
+  align-items: center;
+}
+h2 {
+  color: #1ba098;
+}
